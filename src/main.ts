@@ -160,7 +160,7 @@ class TestReporter {
       }
     }
 
-    core.info(`Creating check run ${name}`)
+    core.info(`@todo Creating check run ${name}`)
     const createResp = await this.octokit.rest.checks.create({
       head_sha: this.context.sha,
       name,

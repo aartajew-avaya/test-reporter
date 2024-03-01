@@ -389,7 +389,7 @@ class TestReporter {
                     throw error;
                 }
             }
-            core.info(`Creating check run ${name}`);
+            core.info(`@todo Creating check run ${name}`);
             const createResp = yield this.octokit.rest.checks.create(Object.assign({ head_sha: this.context.sha, name, status: 'in_progress', output: {
                     title: name,
                     summary: ''
