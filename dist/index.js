@@ -389,7 +389,11 @@ class TestReporter {
                     throw error;
                 }
             }
-            core.info(`@todo Creating check run ${name}`);
+            const { data: runData } = yield this.octokit.rest.actions.getWorkflowRun(Object.assign({ run_id: this.context.runId }, github.context.repo));
+            core.info(`@todo Workflow run data: ${JSON.stringify(runData)}`);
+            const checkSuiteId = runData.check_suite_id;
+            core.info(`@todo Check suite id: ${checkSuiteId}`);
+            core.info(`Creating check run ${name}`);
             const createResp = yield this.octokit.rest.checks.create(Object.assign({ head_sha: this.context.sha, name, status: 'in_progress', output: {
                     title: name,
                     summary: ''

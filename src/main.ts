@@ -160,7 +160,16 @@ class TestReporter {
       }
     }
 
-    core.info(`@todo Creating check run ${name}`)
+    const {data: runData} = await this.octokit.rest.actions.getWorkflowRun({
+      run_id: this.context.runId,
+      ...github.context.repo
+    })
+
+    core.info(`@todo Workflow run data: ${JSON.stringify(runData)}`)
+    const checkSuiteId = runData.check_suite_id
+    core.info(`@todo Check suite id: ${checkSuiteId}`)
+
+    core.info(`Creating check run ${name}`)
     const createResp = await this.octokit.rest.checks.create({
       head_sha: this.context.sha,
       name,
