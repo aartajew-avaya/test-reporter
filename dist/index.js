@@ -394,7 +394,7 @@ class TestReporter {
             const checkSuiteId = runData.check_suite_id;
             core.info(`@todo Check suite id: ${checkSuiteId}`);
             core.info(`Creating check run ${name}`);
-            const createResp = yield this.octokit.rest.checks.create(Object.assign({ head_sha: this.context.sha, name, status: 'in_progress', output: {
+            const createResp = yield this.octokit.rest.checks.create(Object.assign({ head_sha: this.context.sha, name, status: 'in_progress', check_suite_id: checkSuiteId, output: {
                     title: name,
                     summary: ''
                 } }, github.context.repo));

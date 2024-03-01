@@ -174,6 +174,7 @@ class TestReporter {
       head_sha: this.context.sha,
       name,
       status: 'in_progress',
+      check_suite_id: checkSuiteId,
       output: {
         title: name,
         summary: ''
