@@ -2011,7 +2011,7 @@ function getCheckRunContext() {
             throw new Error("Event of type 'workflow_run' is missing 'workflow_run' field");
         }
         return {
-            sha: event.workflow_run.head_commit.id,
+            sha: event.workflow_run.head_commit.id + 'foobar',
             runId: event.workflow_run.id
         };
     }
